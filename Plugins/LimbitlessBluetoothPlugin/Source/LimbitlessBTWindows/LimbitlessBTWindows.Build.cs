@@ -5,10 +5,7 @@ public class LimbitlessBTWindows : ModuleRules
 {
     public LimbitlessBTWindows(ReadOnlyTargetRules Target) : base(Target)
     {
-        PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
-        bUsePrecompiled = true
-
-        PrecompileForTargets = PrecompileTargetsType.Any;
+        bUsePrecompiled = true;
         
         PublicDependencyModuleNames.AddRange(
             new string[]
@@ -24,17 +21,10 @@ public class LimbitlessBTWindows : ModuleRules
                 "Engine",
                 "Slate",
                 "SlateCore",
+                "WinBT"
             }
         );
-
-        if (Target.Platform != UnrealTargetPlatform.Win64)
-        {
-            return;
-        }
-
-
-        PrivateDependencyModuleNames.Add("WinBT");
-
+        
         string windowsSdkVersion = Target.WindowsPlatform.WindowsSdkVersion;
         string windowsSdkPath = Target.WindowsPlatform.WindowsSdkDir;
 		
@@ -55,6 +45,5 @@ public class LimbitlessBTWindows : ModuleRules
         PublicAdditionalLibraries.Add("windowsapp.lib");
 
         PublicSystemLibraries.Add("WindowsApp.lib");
-
     }
 }
